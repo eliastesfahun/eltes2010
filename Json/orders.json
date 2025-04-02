@@ -1,0 +1,32 @@
+[
+    {
+        "order1": {
+            "order_name": "Enjera",
+            "order_id": "ODR-001",
+            "price": 10.99,
+            "drinks": [
+                "Tea",
+                "coca"
+            ],
+            "order_extras": [
+                "cheese",
+                "lettuce"
+            ]
+        }
+    },
+    {
+        "order2": {
+            "order_name": "Burger",
+            "order_id": "ODR-002",
+            "price": 12,
+            "drinks": [
+                "Tea",
+                "coca"
+            ],
+            "order_extras": [
+                "cheese",
+                "lettuce"
+            ]
+        }
+    }
+]
