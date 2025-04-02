@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOG Lovers</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to my dog website</h1>
+    <h2>Random Dog Image</h2>
+    <img id="randomDogImage" src="" alt="random dog image">
+
+    <script>
+
+        // Dog fan website
+        // Lets create a site for dog lovers using this API: https://dog.ceo/api/breeds/image/random
+
+        // Get a random dog image and display it in the browser
+        // Get a new image every 2 sec.
+        // Get the list of all breeds from https://dog.ceo/api/breeds/list/all
+        // Display a random image of a breed from the list https://dog.ceo/api/breed/[BREEDNAME]/images/random
+        // Display the name of the breed under the image
+
+        const randomDogImage = document.getElementById("randomDogImage");
+        // fetch random dog image every 2 seconds
+        function getRandomDogImage() {
+            fetch("https://dog.ceo/api/breeds/image/random")
+                .then(response => response.json())
+                .then(data => {
+                    randomDogImage.src = data.message;
+                });
+        }
+
+        setInterval(getRandomDogImage, 2000);
+
+        getRandomDogImage()
+
+    </script>
+</body>
+
+</html>
