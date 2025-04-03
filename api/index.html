@@ -17,10 +17,16 @@
     <h1>Welcome to my dog website</h1>
     <h2>Random Dog Image</h2>
     <img id="randomDogImage" src="" alt="random dog image">
-
-    <strong id="breedName"></strong>
-
     <ul id="lists"></ul>
+
+    <!-- another random image -->
+
+    <img id="randomDogImage2" src="" alt="something">
+
+    <!-- display breed name  -->
+
+    <strong id="breedname"></strong>
+
 
     <script>
 
@@ -34,7 +40,9 @@
         // Display the name of the breed under the image
 
         const randomDogImage = document.getElementById("randomDogImage");
-        const allBreeds = document.getElementById("lists")
+        const allBreeds = document.getElementById("lists");
+        const randomDogImage2 = document.getElementById("randomDogImage2");
+        const breedname = document.getElementById("breedname")
         // fetch random dog image every 2 seconds
         function getRandomDogImage() {
             fetch("https://dog.ceo/api/breeds/image/random")
@@ -55,10 +63,21 @@
                     for (const breed in data.message) {
                         const li = document.createElement("li");
                         li.textContent = breed;
-                        allBreeds.appendChild(li)
+                        li.addEventListener("click", () => displayBreedImage(breed));
+                        allBreeds.appendChild(li);
                     }
 
                 })
+        }
+
+
+        function displayBreedImage(breed) {
+            fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+                .then(response => response.json())
+                .then(data => {
+                    randomDogImage2.src = data.message;
+                    breedname.textContent=breed;
+                });
         }
 
         getAllBreeds()
