@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOG Lovers</title>
     <style>
-
+        img {
+            width: 200px;
+            height: 200px
+        }
     </style>
 </head>
 
@@ -14,6 +17,10 @@
     <h1>Welcome to my dog website</h1>
     <h2>Random Dog Image</h2>
     <img id="randomDogImage" src="" alt="random dog image">
+
+    <strong id="breedName"></strong>
+
+    <ul id="lists"></ul>
 
     <script>
 
@@ -27,6 +34,7 @@
         // Display the name of the breed under the image
 
         const randomDogImage = document.getElementById("randomDogImage");
+        const allBreeds = document.getElementById("lists")
         // fetch random dog image every 2 seconds
         function getRandomDogImage() {
             fetch("https://dog.ceo/api/breeds/image/random")
@@ -39,6 +47,21 @@
         setInterval(getRandomDogImage, 2000);
 
         getRandomDogImage()
+
+        function getAllBreeds() {
+            fetch("https://dog.ceo/api/breeds/list/all")
+                .then(response => response.json())
+                .then(data => {
+                    for (const breed in data.message) {
+                        const li = document.createElement("li");
+                        li.textContent = breed;
+                        allBreeds.appendChild(li)
+                    }
+
+                })
+        }
+
+        getAllBreeds()
 
     </script>
 </body>
